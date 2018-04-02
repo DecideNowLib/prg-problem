@@ -1,0 +1,10 @@
+{
+    "name": "decidenowlib/prg-problem",
+    "description": "Post-redirect-get flow problem in Laravel",
+    "authors": [
+        {
+            "name": "Alexander Sokolov",
+            "email": "sanya_sokolov@inbox.ru"
+        }
+    ]
+}
