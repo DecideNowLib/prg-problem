@@ -13,7 +13,7 @@ The package for Laravel helps to reproduce this problem.
 
 ## Insall
 
-In Laravel project forder execute commands (can be new or existing project, chenges are easily removed)
+In Laravel project forder execute commands (can be new or existing project, changes are easily removed)
 ```
 composer config repositories vcs https://github.com/DecideNowLib/prg-problem.git
 composer require decidenowlib/prg-problem:dev-master
