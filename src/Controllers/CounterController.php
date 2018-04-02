@@ -2,16 +2,22 @@
 
 namespace DecideNowLib\PRGProblem;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Session;
 
-class CounterController extends Controller
+class CounterController extends BaseController
 {
+	use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+	
 	private $counter_value = 0;
 	
 	public function index()
 	{
-		return view('prg_problem.index');
+		return view('prg_problem::index');
 	}
 	
 	
@@ -20,7 +26,7 @@ class CounterController extends Controller
 	public function classicFlowGet(Request $request)
 	{
 		$counter_value = $this->counter_value;
-		return view('prg_problem.counter', ['counter_value' => $counter_value, 'test_type' => 'classic']);
+		return view('prg_problem::counter', ['counter_value' => $counter_value, 'test_type' => 'classic']);
 	}
 	
 	public function classicFlowPost(Request $request)
@@ -38,7 +44,7 @@ class CounterController extends Controller
 	public function prgFlowGet(Request $request)
 	{
 		$counter_value = Session::get('counter_value', 0);
-		return view('prg_problem.counter', [ 'counter_value' => $counter_value, 'test_type' => 'prg']);
+		return view('prg_problem::counter', [ 'counter_value' => $counter_value, 'test_type' => 'prg']);
 	}
 	
 	public function prgFlowPost(Request $request)
@@ -47,7 +53,7 @@ class CounterController extends Controller
 		$counter_value++;
 		
 		Session::flash('counter_value', $counter_value);
-		return redirect()->action('CounterController@prgFlowGet');
+		return redirect('/prg-problem/prg-flow');
 	}
 	
 	
@@ -56,7 +62,7 @@ class CounterController extends Controller
 	public function breakGet(Request $request)
 	{
 		$counter_value = 0;
-		return view('prg_problem.break', [ 'counter_value' => $counter_value, ]);
+		return view('prg_problem::break', [ 'counter_value' => $counter_value, ]);
 	}
 	
 	public function breakPost(Request $request)
