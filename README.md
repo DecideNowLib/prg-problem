@@ -1,5 +1,5 @@
 # Post-Redirect-Get flow problem
-In my implementation of "Post-Redirect-Get" for Laravel flow a problem appears when using parallel AJAX request and flash session data. Any RECOMENDATIONS to improve the implementation are WELLCOME.
+In my implementation of "Post-Redirect-Get" flow for Laravel a problem appears when using parallel AJAX request and flash session data. Any RECOMENDATIONS to improve the implementation are WELLCOME.
 
 ## Real Example
 
