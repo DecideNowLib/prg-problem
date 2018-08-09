@@ -30,9 +30,8 @@ Add ServiceProvider to **config/app.php**
 ```
 
 ## The Test
-The application must increase counter value on every button push.
-
-When page is refreshed the counter value must be reset to zero.
+1. The application must increase counter value on every button push.
+2. When page is refreshed the counter value must be reset to zero.
 
 ## Reproduce problem
 1. In your browser go to
@@ -49,5 +48,11 @@ _The page sends post requests to increment counter every 1 second._
 
 5. Push "Increment" button several times.
 
-* on "classic flow" test counter value will be increased on every button push (**expected**), but "refresh" and "back" browser buttons will give bad values (the same value on "refresh" and old values on "back" button) (**unexpected**).
-* on "post-redirect-get" test value will be sometimes taken from neighbour "breaking" tab (**unexpected**), but every refresh will set counter value to zero (**expected**). If "breaking" tab is not opened application acts as desired! (**expected**)
+## The Problem
+* on "classic flow" test condition #2 fails:
+1. counter value will be increased on every button push (**expected**), 
+2. "refresh" and "back" browser buttons will give bad values (the same value on "refresh" and old values on "back" button) (**unexpected**).
+
+* on "post-redirect-get" test condition #1 fails if parallel request executes:
+1. counter will be sometimes taken from neighbour "breaking" tab (**unexpected**), 
+2. "refresh" will set counter value to zero (**expected**). If "breaking" tab is not opened application acts as desired! (**expected**)
